@@ -4,7 +4,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:untitled/route_helper/route_helper.dart';
 import 'package:untitled/screens/map_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
@@ -15,7 +15,7 @@ void main() async{
       Locale('ar'),
     ],
     fallbackLocale: Locale('ar'),
-    startLocale: Locale('ar'),
+    startLocale: Locale('en'),
     path: 'assets/translations',
   ));
 }
@@ -25,6 +25,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: context.locale,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
       debugShowCheckedModeBanner: false,
       navigatorKey: RouteHelper.routeHelper.navKey,
       builder: (context, widget) => ResponsiveWrapper.builder(
